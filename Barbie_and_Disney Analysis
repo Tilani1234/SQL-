@@ -1,0 +1,41 @@
+In these SQL queries, I am extracting various information from the "BIT_DB" database, 
+focusing on Barbie characters and related details such as names, 
+characteristics, voice actors, and Disney+ movies, utilizing conditions and ordering to tailor the results.
+
+SELECT*
+FROM BIT_DB.Barbie_Table;
+
+SELECT*
+FROM BIT_DB.Barbie_Characters;
+
+SELECT "Character Name"
+FROM BIT_DB.Barbie_Characters;
+
+/*Show me the Barbies the names of the Barbies that are Princesses and are Human*/
+SELECT "Character Name"
+FROM BIT_DB.Barbie_Characters
+WHERE "Character Name" LIKE '%Princess%' AND Race='Human';
+
+/*Show me the male names of the male characters with Brown or Dark hair in alphabetical order */
+SELECT "Character Name"
+FROM BIT_DB.Barbie_Characters
+WHERE (Gender='Male') AND Hair='Brown' OR Hair LIKE "%Dark%"
+ORDER BY "Character Name";
+
+/*Show me the Characters that are  fairies and have blue eyes in Descending order */
+SELECT DISTINCT "Character Name"
+FROM BIT_DB.Barbie_Characters 
+WHERE Race LIKE '%Fairy%' AND Eyes='Blue'
+ORDER BY "Character Name";
+
+/*Show me the titles of Movies that are from The United States in ascending order*/
+SELECT title
+FROM Disney_Plus
+WHERE type='Movie' AND Country="United States"
+ORDER BY title;
+
+/*Show me the Character names for Barbie Characters that voiced by Lee Tockar in descending order*/
+SELECT "Character Name"
+FROM BIT_DB.Barbie_Characters
+WHERE "Speaking Voice"= 'Lee Tockar'
+ORDER BY "Character Name" DESC;
